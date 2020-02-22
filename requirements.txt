@@ -32,6 +32,7 @@ pathlib2==2.3.5
 Pillow==6.2.2
 pipenv==2018.11.26
 pycrypto==2.6.1
+pygobject
 PyJWT==1.7.1
 PyPDF2==1.26.0
 python-openid==2.2.5
