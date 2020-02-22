@@ -1,0 +1,30 @@
+<!-- startup.{insert model attribute name} to get the attribute of that model -->
+{% extends 'base.html'  %}
+{% load static %}
+{% block extra_css %}
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="{% static 'startupPage.css' %}">
+{% endblock %}
+
+{% block content %}
+<br>
+<br>
+<br>
+<div class="container"><br>
+<h5 id="head5" >{{startup.title}}</h5><br>
+<div class="card-media-object yyy" style="background-image: url(../media/{{startup.logo}}); background-repeat: no-repeat; background-size:cover;" id="logo"><br><br>
+</div>
+<br>
+<h8 class="hed">Team</h8><br>
+<h8 id="desc">{{startup.team}}</h8><br>
+<h8 class="hed">Description</h8><br>
+<h8 id="desc">{{startup.description}}</h8><br>
+<h8 class="hed"> For More Details :</h8>
+<h8 id="desc"><a href="{{startup.url}}">{{startup.url}}</a></h8><br>
+</div>
+<br>
+<br>
+
+<!-- startup.{insert model attribute name} to get the attribute of that model -->
+
+{% endblock %}

@@ -1,0 +1,17 @@
+html{
+	font-size:100%;
+
+}
+#head8{
+  font-size:1.25em;
+  font-family:'Robot-Light',sans-serif;
+  color:#d24c38;
+  
+}
+#head5{
+  text-align: center;
+  font-size:1.625em;
+  font-family:'Robot-Light',sans-serif;
+  color:#ec5133;
+  font-weight: bold;
+}

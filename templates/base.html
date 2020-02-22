@@ -1,0 +1,128 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+ 
+
+  <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha384-fJU6sGmyn07b+uD1nMk7/iSb4yvaowcueiQhfVgQuD98rfva8mcr1eSvjchfpMrH" crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+  
+  {% block extra_css %}{% endblock %}
+</head>
+
+<div class="container-fluid text-center jumbotron fixed-top" style="margin-bottom: 0px; padding-top:0px; padding-bottom:16px; height: 15vh; background-color:#ffff; border-radius:0em;">
+           <div class="row">
+            <div class="col-md-1">
+            <a href="/"><img src="{% static 'logo.png' %}" width="110vh" height="65vh" alt="" /></a>
+            </div>
+            <div class="col-md-10" style="padding-top:8px; font-weight:900; color:#821618">
+                <h7 style="font-weight:bold">Centre of Innovation, Incubation and Entrepreneurship</h7><br>
+                  <h7 style="font-weight:bold">NIIT University</h7>
+            </div>
+            <div class="col-md-1";>
+            <a href="https://www.niituniversity.in/"><img src="{% static 'nulogo.png' %}" width="110vh" height="65vh" alt="" style="padding-right:2em;" /></a>
+            </div>
+          </div>
+</div>
+  
+</div>
+<div>
+<div class="navbar">
+  <nav class="navbar navbar-expand-lg navbar-light bg-custom fixed-top" style="margin-top:67px; background-color:#821618;">
+     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+      </button>
+    <div class="collapse navbar-collapse" id="navbarNav" >
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item" >
+          <a class="nav-link active" href="/">Home</a>
+        </li> 
+        <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          About
+        </a>
+        <div class="dropdown-menu " aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="{% url 'wedo' %}">What we do</a>
+          <a class="dropdown-item" href="{% url 'team' %}">Team</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Programs
+        </a>
+        <div class="dropdown-menu " aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="{% url 'events' %}">Events</a>
+          <a class="dropdown-item" href="{% url 'startups' %}">Startups</a>
+          <a class="dropdown-item" href="{% url 'robotics' %}">Robotics Club</a>
+        </div>
+      </li>
+       
+
+  <li class="nav-item">
+    <a class="nav-link active" href="{% url 'gallery' %}">Gallery</a>
+  </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Contact Us
+        </a>
+        <div class="dropdown-menu " aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="{% url 'idea' %}">Submit Your Idea</a>
+          <a class="dropdown-item" href="{% url 'startup' %}">Submit Startup</a>
+          <a class="dropdown-item" href="{% url 'joinus' %}">Join Us</a>
+        </div>
+      </li>
+        {% if user.is_authenticated %}
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                {{request.user.FirstName}}
+            </a>
+            <div class="dropdown-menu" aria-labelledbys="navbarDropdown">
+                <a class="dropdown-item" href="#">Profile</a>
+                <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
+            </div>
+          </li>
+            {% else %}
+           <li class="nav-item">
+    <a class="nav-link active" href="{% url 'login' %}?next={{request.path}}">Login</a>
+  </li>
+        {% endif %}
+    </ul>
+  </div>
+</nav>
+</div>
+<body>
+<div class="rest " >
+{% block content %}
+{% endblock %}
+</div>
+
+<footer class="footer-distributed" style="height: 8vh;">
+
+      <div class="footer-center">
+
+        <div>
+          <p style="text-align: center;">Copyright © 2019.NIIT University
+</p>
+        </div>
+
+
+      </div>
+
+
+</footer>
+
+</body>
+</html>

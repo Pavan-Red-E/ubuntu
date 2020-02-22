@@ -1,0 +1,24 @@
+{% extends 'base.html'  %}
+{% load static from staticfiles %}
+{% block extra_css %}
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="{% static 'event_details.css' %}">
+{% endblock %}
+
+{% block content %}
+<br>
+<br>
+<br>
+<div class="container"><br>
+<h5 id="head5" >{{event.title}}</h5>
+<div class="card-media-object yyy" style="background-image: url(../media/{{event.logo}}); background-repeat: no-repeat; background-size:cover;" id="logo"><br><br>
+</div>
+<br>
+<h8 id="desc">{{event.description}}</h8><br>
+</div>
+<br>
+<br>
+
+<!-- startup.{insert model attribute name} to get the attribute of that model -->
+
+{% endblock %}

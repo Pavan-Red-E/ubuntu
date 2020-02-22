@@ -1,0 +1,146 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+
+  <link rel="stylesheet" href="{% static 'joinus.css' %}">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+
+label{
+
+	font-size:24px;
+	font-family:Roboto;
+}
+
+.btn{
+
+	background-color: #821618;
+	color:white;
+	cursor:pointer;
+	padding:10px;
+	width:40%;
+  align:center;
+
+}
+
+.collapsible {
+  color: white;
+  cursor: pointer;
+  padding: 18px;
+  width: 30%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+}
+
+
+input{
+		margin :20px;
+}
+.content {
+	width:50%;
+  padding: 0 18px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+  background-color: #f1f1f1;
+}
+.container{
+  
+  border: 1px solid black;
+  box-shadow: 4px 4px #7777;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width:50%;
+  box-shadow: 4px 4px #888888;
+ 
+}
+textarea{
+  width:100%;
+}
+
+#head5{
+  text-align: center;
+  font-size:1.625em;
+  font-family:'Robot-Light',sans-serif;
+  color:#ec5133;
+  font-weight: bold;
+}
+
+</style>
+{% endblock %}
+
+{% block content %}
+<br><br><br>
+<div class="login-page" style="width: 600px;">
+  <div class="form" style="width: 600px;">
+<h5 id="head5">Submit Your Idea!</h5><br><br>
+{{ form.non_field_errors }}
+<div class="fieldWrapper">
+    {{ form.first_name.errors }}
+    <label for="{{ form.first_name.id_for_label }}">First Name</label>
+    {{ form.first_name }}
+</div>
+<div class="fieldWrapper">
+    {{ form.last_name.errors }}
+    <label for="{{ form.last_name.id_for_label }}">Last Name</label>
+    {{ form.last_name }}
+</div>
+<div class="fieldWrapper">
+    {{ form.email.errors }}
+    <label for="{{ form.email.id_for_label }}">Email</label>
+    {{ form.email }}
+</div>
+<div class="fieldWrapper">
+    {{ form.enrollment_no.errors }}
+    <label for="{{ form.enrollment_no.id_for_label }}">Enrollment Number</label>
+    {{ form.enrollment_no }}
+</div>
+
+<div class="fieldWrapper">
+    {{ form.join_ciie.errors }}
+    <label for="{{ form.join_ciie.id_for_label }}">Join CIIE</label>
+    {{ form.join_ciie }}
+</div>
+
+<button class="collapsible" id="cll" style="display: none">Click Here to join us</button>
+<div class="content">
+   
+<div class="fieldWrapper" id="txt">
+    {{ form.why_do_you_want_to_join_CIIE.errors }}
+    <label for="{{ form.why_do_you_want_to_join_CIIE.id_for_label }}">Why do you want to join CIIE</label>
+    {{ form.why_do_you_want_to_join_CIIE }}
+</div>
+</div>
+<br>
+<button class="btn" > Submit form </button><br><br>
+</div><br><br>
+</div>
+
+<script>
+$("#id_join_ciie").click(function() {
+  $("#cll").trigger("click");  
+});
+
+
+
+var coll = document.getElementsByClassName("collapsible");
+var i;
+
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.maxHeight){
+      content.style.maxHeight = null;
+    } else {
+      content.style.maxHeight = content.scrollHeight + "px";
+    } 
+  });
+}
+</script>
+{% endblock %}

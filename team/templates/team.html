@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+ <link rel="stylesheet" href="{% static 'team.css' %}">
+{% endblock %}
+
+{% block content %}
+
+
+<section class="our-webcoderskull padding-lg"><br>
+	<h5 id="head5">Our Team</h5><br><br>
+	<div class="container">
+	{% for title,key in dic.items %}
+		<div class="row heading heading-icon">
+			<h8 id="head8">{{key}}</h8>
+		</div>       
+		<ul class="row  justify-content-center">
+		{% for name in title  %}
+			<li class="col-12 col-md-6 col-lg-3">
+				<div class="cnt-block equal-hight" style="height: 349px;">
+					<figure><img src="../media/{{name.image}}" class="img-responsive" alt=""></figure>
+					<h3><a href="{{name.url}}">{{name.name}}</a></h3>
+					<ul class="follow-us clearfix">
+						<li><p>{{name.email}}</li></p></li>
+					</ul>
+				</div>  
+			</li>
+		{% endfor %}
+		</ul>
+	{% endfor %}
+	</div>
+</section>
+{% endblock %}
+
+
+
+

@@ -1,0 +1,101 @@
+
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+  
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+  <script src="sweetalert2.all.min.js"></script>
+  <script type="text/javascript">
+
+        $(document).on('submit', '.evn', function(e){
+          $("#btnAddProfile").attr('value', 'Save');
+          btn= $(this).parent().find("input[type='submit']");
+          if(btn.val()=='REGISTER'){
+            btn.attr('value', 'UNREGISTER');
+              Swal.fire({
+              title: 'Registered!',
+              text: 'You have registered for the event',
+              type: 'success',
+              showCancelButton: false, // There won't be any cancel button
+              showConfirmButton: false
+            })
+          }
+          else {
+            btn.attr('value', 'REGISTER');
+            Swal.fire({
+              title: 'Unregistered!',
+              text: 'You have unregisted from the event',
+              type: 'warning',
+              showCancelButton: false, // There won't be any cancel button
+              showConfirmButton: false
+            })
+          }
+
+          e.preventDefault();
+          $.ajax({
+            type: 'POST',
+            url: '/events/submit',
+            data:{
+              event:$(this).parent().find("input[class='name']").val(),
+              csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val()
+            },
+            sucess:function(data){
+              console.log('ok');
+            }
+          });
+        });
+
+    </script> 
+    <link rel="stylesheet" href="{% static 'events.css' %}">
+{% endblock %}
+
+{% block content %}
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+
+<div class="container1"><br>
+<h8 id="head8">Events</h8><br><br>
+{% for event,key in events.items %}  
+<div class="card-media" style="margin: 10px;">
+ <!-- media container -->
+    <div class="card-media-object-container ">
+      <div class="card-media-object yyy" style="background-image: url(../media/{{event.logo}}); background-size: cover; background-repeat: no-repeat;">
+        <div class="card-media-object-social-list  ">
+        {% if user.is_authenticated %}
+          <form class="evn " method="POST">
+        {% csrf_token %}
+        <input type="hidden" class="name" value="{{event.title}}">
+                {% if key %}
+                <input type="submit" class="btn btn-info  " value="UNREGISTER" /> 
+                {% else %}
+                <input type="submit" class="btn btn-info " value="REGISTER" />
+                {% endif %}
+            </form>
+            {% else %}
+      <a  class="btn btn-info " value="REGISTER" href="{% url 'login' %}">REGISTER</a> 
+            {% endif %}
+        </div>
+      </div>
+    </div>
+
+    <!-- body container -->
+    <div class="card-media-body">
+      <span class="card-media-body-heading" style="overflow-y: auto; height: 190px; padding-bottom: 5px;"><b>{{event.title}}</b> 
+        <br> {{event.description}}</span>
+      <div class="card-media-body-supporting-bottom">
+        <span class="card-media-body-supporting-bottom-text subtle u-float-right"><a href="/event_details?id={{event.pk}}" id:"details">Details</a></span>
+      </div>
+    </div>
+
+  </div>
+<br>
+{% endfor %}
+</div>
+{% endblock %}

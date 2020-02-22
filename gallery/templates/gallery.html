@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block extra_css %}
+  <link rel="stylesheet" href="{% static 'gallery.css' %}">
+{% endblock %}
+
+{% block content %}
+<br><br>
+
+  <h5 id="head5" style="text-align: center !important;
+  font-size:1.625em!important;
+  font-family:'Robot-Light',sans-serif!important;
+  color:#ec5133!important;
+  font-weight: bold!important;">Gallery</h5><br>
+  <div class="container gal-container ">
+
+	{% for pic in pics %}
+  <img class="image" id="myImg{{forloop.counter}}" src="../media/{{pic.image}}" style="width:330px;height:250px; object-fit: cover;">
+
+	{% endfor %}
+
+<div id="myModal" class="modal">
+  <span class="close">&times;</span>
+  <img class="modal-content" id="img">
+  <div id="caption"></div>
+</div>
+
+<script>
+var modal = document.getElementById('myModal');
+var modalImg = document.getElementById("img");
+var captionText = document.getElementById("caption");
+
+$(".image").on('click', function(event){
+    var id = $(this).attr('id');
+    var img = document.getElementById(id);
+    modal.style.display = "block";
+    modalImg.src = this.src;
+    captionText.innerHTML = this.alt;
+});
+
+var span = document.getElementsByClassName("close")[0];
+
+
+$( "#myModal" ).mousedown(function() {
+        modal.style.display = "none";
+});
+
+</script>
+
+
+
+{% endblock %}

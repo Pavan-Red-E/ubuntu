@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+  <link rel="stylesheet" href="{% static 'wedo.css' %}">
+{% endblock %}
+{% block content %}
+
+<div class=" d-block w-100">
+  <img src="{% static 'wedo.jpg' %}" style="width:100%; height:70vh;">
+<!--  <h3 style="text-align: center"> What We Do</h1>-->
+</div>
+
+<!--<hr>
+
+<div class="row">
+  <div class="column">
+    <img src="{% static '1.jpg' %}" alt="NU-CIIE" style="width:100%; height: 400px;">
+  </div>
+  <div class="column">
+    <img src="{% static '2.jpg' %}" alt="NU-CIIE" style="width:100%; height: 400px">
+  </div>
+  <div class="column">
+    <img src="{% static '1.jpg' %}" alt="NU-CIIE" style="width:100%; height: 400px;  transform: scaleX(-1);">
+  </div>
+</div>
+<hr>
+
+</div>-->
+
+
+<div class="text1">
+  <h8 id="head8">What We Do </h8><br><br>
+  <p><span class="first-word">NU-CIIE</span> works to provide a platform to its students, so that may share their ideas, innovations and concepts. It conducts training programmes in the field of entrepreneurial skill development and develops entrepreneurship related course curriculum to incorporate in management and engineering programmes. It also provides guidance and facilities to first time entrepreneurs during gestation.</p>
+</div>
+
+
+{% endblock %}

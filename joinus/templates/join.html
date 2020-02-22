@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css%}
+  <link rel="stylesheet" href="{% static 'joinus.css' %}">
+{% endblock %}
+
+
+{% block content %}
+<br><br><br>
+<h5 id="head5">JOIN US ! </h5>
+<div class="login-page" style="width: 600px;">
+	<div class="form" style="width: 600px;">
+	<form class='login-form' method = "POST" >
+		
+		{% csrf_token %}
+		{{form.as_p}}
+		<button type="submit"> SEND </button>
+	</form>
+	</div>
+</div>
+
+{% endblock %}

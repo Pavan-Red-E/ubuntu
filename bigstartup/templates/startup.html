@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+
+{% block content %}
+<html>
+<head>
+<style>
+.contact-page{
+  width: 660px;
+  padding: 16% 6% 0;
+  margin: auto;
+}
+
+.form {
+  position: relative;
+  z-index: 1;
+  background-color:hsla(9, 100%, 64%, 0.4);
+  max-width: 660px;
+  
+  padding: 45px;
+  text-align: center;
+ 
+  border-width:10px;
+  border-style: solid;
+  font-family: "Roboto", sans-serif;
+  outline: 0;
+  background: #f2f2f2;
+  width: 100%;
+  border: 0;
+  margin: 0 0 15px;
+  padding: 15px;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+button {
+  font-family: "Roboto", sans-serif;
+  text-transform: uppercase;
+  outline: 0;
+  background: #dd503c;
+  width: 30%;
+  border: 0;
+  padding: 15px;
+  color: #FFFFFF;
+  font-size: 16px;
+  -webkit-transition: all 0.3 ease;
+  transition: all 0.3 ease;
+  cursor: pointer;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.44);
+}
+ button:hover,button:active,.form button:focus {
+  background: #821618;
+
+}
+
+label{
+	font-family:roboto;
+	font-size:26px;
+}
+
+#id_email{
+	width:250px;
+	margin-left  : 10px; 
+	
+}
+
+
+
+
+h2{
+	background-color:lightgray;
+}
+</style>
+</head>
+
+<div class="contact-page">
+	<div class="form">
+
+	<form method = "POST" >
+		<h2>Application Form For Incubation at NIIT University </h2><br>
+		{% csrf_token %}
+		{{form.as_p}}
+		<button type="submit"> SEND </button>
+	</form>
+	</div>
+</div>
+
+
+
+{% endblock %}

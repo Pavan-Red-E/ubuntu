@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css%}
+  <link rel="stylesheet" href="{% static 'login.css' %}">
+{% endblock %}
+{% block content %}
+
+<div class="login-page" style="width: 600px;">
+	<div class="form" style="width: 600px;">
+
+	<form method = "POST" class='login-form' >
+		<h4>Application Form For Incubation at NIIT University </h4><br>
+		{% csrf_token %}
+		{{form.as_p}}
+		<button type="submit"> SEND </button>
+	</form>
+	</div>
+</div>
+
+
+
+{% endblock %}

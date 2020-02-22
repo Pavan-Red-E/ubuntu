@@ -1,0 +1,33 @@
+{% extends 'base.html'  %}
+{% load static %}
+
+{% block extra_css %}
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="{% static 'startups.css' %}">
+
+{% endblock %}
+{% block content %}
+<div class="container1"><br>
+<h8 id="head8">NU Startups</h8><br><br>
+{% for startup in startups %}
+<div class="card-media" style="margin: 10px;">
+  <div class="card-media-object-container "><a href="/startup?id={{startup.pk}}">
+    <div class="card-media-object yyy" style="background-image: url(../media/{{startup.logo}}); background-size: cover; background-repeat: no-repeat;">
+    </div></a>
+  </div>
+
+
+ <div class="card-media-body">
+      <span class="card-media-body-heading" style="overflow-y: auto; height: 190px; padding-bottom: 5px;"><b>{{startup.title}}</b> 
+        <br> 
+      {{startup.team}}</span>
+  <div class="card-media-body-supporting-bottom">
+        <span class="card-media-body-supporting-bottom-text subtle u-float-right"><a href="/startup?id={{startup.pk}}">Details</a></span>
+      </div>
+    </div>
+    </div>
+     <br>
+{% endfor %}
+ </div>
+<br>
+{% endblock %}
